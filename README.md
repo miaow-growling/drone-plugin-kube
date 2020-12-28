@@ -22,3 +22,18 @@ See [example/Role.yaml](example/Role.yaml), [example/ServiceAccount.yaml](exampl
 ## Acknowledgements
 - [@vallard](https://github.com/vallard) for the original plugin
 - [@jbonzo](https://github.com/jbonzo) for ingress, service support, improved error handling etc
+
+```.env
+  - name: publish
+    image: plugins/docker
+    settings:
+      dockerfile: ./build/Dockerfile
+      registry: registry.cn-shenzhen.aliyuncs.com
+      repo: registry.cn-shenzhen.aliyuncs.com/yuanshuai/drone-ys-kube
+      username:
+        from_secret: registry_username
+      password:
+        from_secret: registry_password
+      tags:
+        - ${DRONE_BUILD_NUMBER}
+```
